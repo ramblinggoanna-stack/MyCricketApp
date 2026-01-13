@@ -18,11 +18,6 @@ if st.button('Next Ball', use_container_width=True):
     else:
         st.error("Game Over! You've lost 10 wickets.")
 
-# UI Layout
-col1, col2 = st.columns(2)
-col1.metric("Total Runs", st.session_state.runs)
-col2.metric("Wickets", st.session_state.wickets)
-
 # Game Logic Function
 def play_turn():
     roll = check_roll(random.randint(0, 10))
@@ -32,6 +27,12 @@ def play_turn():
     else:
         st.session_state.runs += roll
         st.session_state.history.insert(0, f"✅ Scored {roll} runs")
+
+
+# UI Layout
+col1, col2 = st.columns(2)
+col1.metric("Total Runs", st.session_state.runs)
+col2.metric("Wickets", st.session_state.wickets)
 
 def check_roll(roll):
     match roll:
