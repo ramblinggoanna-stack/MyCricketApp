@@ -12,12 +12,6 @@ if 'runs' not in st.session_state:
     st.session_state.wickets = 0
     st.session_state.history = []
 
-if st.button('Next Ball', use_container_width=True):
-    if st.session_state.wickets < 10:
-        play_turn()
-    else:
-        st.error("Game Over! You've lost 10 wickets.")
-
 # Game Logic Function
 def play_turn():
     roll = check_roll(random.randint(0, 10))
@@ -28,6 +22,12 @@ def play_turn():
         st.session_state.runs += roll
         st.session_state.history.insert(0, f"✅ Scored {roll} runs")
 
+
+if st.button('Next Ball', use_container_width=True):
+    if st.session_state.wickets < 10:
+        play_turn()
+    else:
+        st.error("Game Over! You've lost 10 wickets.")
 
 # UI Layout
 col1, col2 = st.columns(2)
