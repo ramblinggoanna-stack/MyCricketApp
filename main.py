@@ -38,6 +38,7 @@ def check_roll(roll):
             return 6
         case 9 | 10:
             return 5
+
 # UI Layout
 col1, col2 = st.columns(2)
 col1.metric("Total Runs", st.session_state.runs)
@@ -50,8 +51,8 @@ if st.button('Roll the Dice', use_container_width=True):
         st.error("Game Over! You've lost 10 wickets.")
 
 # Display Roll History
-st.write("### Roll History")
-for log in st.session_state.history[:5]: # Show last 5 rolls
+st.write("### Over History")
+for log in st.session_state.history[:6]: # Show last 6 rolls
     st.text(log)
 
 if st.button('Reset Game'):
