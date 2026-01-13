@@ -14,14 +14,30 @@ if 'runs' not in st.session_state:
 
 # Game Logic Function
 def play_turn():
-    roll = random.randint(1, 6)
+    roll = check_roll(random.randint(0, 10))
     if roll == 5:
         st.session_state.wickets += 1
-        st.session_state.history.insert(0, "❌ Rolled a 5: OUT!")
+        st.session_state.history.insert(0, "❌ OUT!")
     else:
         st.session_state.runs += roll
-        st.session_state.history.insert(0, f"✅ Rolled a {roll}: +{roll} runs")
+        st.session_state.history.insert(0, f"✅ Scored {roll} runs")
 
+def check_roll(roll):
+    match roll:
+        case 0 | 1 :
+            return 0
+        case 2 | 3:
+            return 1
+        case 4 | 5:
+            return 2
+        case 6:
+            return 3
+        case 7: 
+            return 4
+        case 8:
+            return 6
+        case 9 | 10:
+            return 5
 # UI Layout
 col1, col2 = st.columns(2)
 col1.metric("Total Runs", st.session_state.runs)
