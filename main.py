@@ -5,7 +5,7 @@ st.set_page_config(page_title="Dice Cricket", page_icon="🏏")
 st.title("🏏 Dice Cricket: 1v1 Battle")
 
 # --- 1. DEFINITIONS ---
-maxballs = 60
+maxballs = 12
 
 def check_roll(roll):
     match roll:
@@ -87,7 +87,7 @@ with c2:
 st.write(f"Over: {st.session_state.overs} (Max :{maxballs/6})")
 
 if st.session_state.current_player == 2:
-    st.write(f"{st.session_state.runs_p1 - st.session_state.runs_p2} off {maxballs - st.session.state.balls} balls")
+    st.write(f"{st.session_state.runs_p1 - st.session_state.runs_p2} off {maxballs - st.session_state.balls} balls")
 
 # Display Roll History
 # History and Reset
