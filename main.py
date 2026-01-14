@@ -86,6 +86,9 @@ with c2:
 
 st.write(f"Over: {st.session_state.overs} (Max :{maxballs/6})")
 
+if st.session_state.current_player == 2:
+    st.write(f"{st.session_state.runs_p1 - st.session_state.runs_p2} off {maxballs - st.session.state.balls} balls")
+
 # Display Roll History
 # History and Reset
 st.write("### Match History")
