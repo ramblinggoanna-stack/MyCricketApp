@@ -82,7 +82,7 @@ with c2:
     st.metric("Runs", st.session_state.runs_p2)
     st.caption(f"Wickets: {st.session_state.wickets_p2}")
 
-st.write("Over: {st.session_state.overs}")
+st.write(f"Over: {st.session_state.overs}")
 
 # Display Roll History
 # History and Reset
