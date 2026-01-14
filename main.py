@@ -18,7 +18,9 @@ def check_roll(roll):
 def play_turn():
     roll = check_roll(random.randint(0, 10))
     st.session_state.balls += 1
-    st.session_state.overs = str(int(st.session_state.balls/6)) + "." + str((st.session_state.balls - (int(st.session_state.balls/6)*6)))    if st.session_state.current_player == 1:
+    st.session_state.overs = str(int(st.session_state.balls/6)) + "." + str((st.session_state.balls - (int(st.session_state.balls/6)*6)))    
+    
+    if st.session_state.current_player == 1:
         st.session_state.balls_p1 += 1
         if roll == 5:
             st.session_state.wickets_p1 += 1
