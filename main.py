@@ -19,16 +19,6 @@ if 'runs_p1' not in st.session_state:
     st.session_state.history = []
 
 # --- 2. HELPER FUNCTIONS ---
-def check_roll(roll):
-    match roll:
-        case 0 | 1: return 0
-        case 2 | 3: return 1
-        case 4 | 5: return 2
-        case 6: return 3
-        case 7: return 4
-        case 8: return 6
-        case 9 | 10: return 5
-
 def play_turn():
     roll = check_roll(random.randint(0, 10))
     
@@ -63,8 +53,18 @@ def play_turn():
         elif st.session_state.wickets_p2 >= 10:
             st.session_state.game_over = True
 
-# --- 3. UI DISPLAY ---
+def check_roll(roll):
+    match roll:
+        case 0 | 1: return 0
+        case 2 | 3: return 1
+        case 4 | 5: return 2
+        case 6: return 3
+        case 7: return 4
+        case 8: return 6
+        case 9 | 10: return 5
 
+
+# --- 3. UI DISPLAY ---
 # Scoreboard
 c1, c2 = st.columns(2)
 with c1:
