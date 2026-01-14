@@ -9,6 +9,7 @@ st.title("🏏 Dice Cricket Prototype")
 # Game Logic Function
 def play_turn():
     roll = check_roll(random.randint(0, 10))
+    st.session_state.balls += 1
     if roll == 5:
         st.session_state.wickets += 1
         st.session_state.history.insert(0, "❌ OUT!")
@@ -38,6 +39,7 @@ def check_roll(roll):
 if 'runs' not in st.session_state:
     st.session_state.runs = 0
     st.session_state.wickets = 0
+    st.session_state.balls = 0
     st.session_state.history = []
 
 if st.button('Next Ball', use_container_width=True):
@@ -47,9 +49,10 @@ if st.button('Next Ball', use_container_width=True):
         st.error("Game Over! You've lost 10 wickets.")
 
 # UI Layout
-col1, col2 = st.columns(2)
+col1, col2, col3 = st.columns(3)
 col1.metric("Total Runs", st.session_state.runs)
 col2.metric("Wickets", st.session_state.wickets)
+col3.metric("Overs", st.session_state.wickets/6)
 
 # Display Roll History
 st.write("### Over History")
@@ -59,5 +62,6 @@ for log in st.session_state.history[:6]: # Show last 6 rolls
 if st.button('Reset Game'):
     st.session_state.runs = 0
     st.session_state.wickets = 0
+    st.session_state.balls = 0
     st.session_state.history = []
     st.rerun()
