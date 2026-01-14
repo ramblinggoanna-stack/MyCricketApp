@@ -9,6 +9,9 @@ st.title("🏏 Dice Cricket Prototype")
 # Game Logic Function
 def play_turn():
     roll = check_roll(random.randint(0, 10))
+    if int(st.session_state.balls/6) == int(st.session_state.balls/6)*6:
+        st.session_state.history = []
+    
     st.session_state.balls += 1
     st.session_state.overs = str(int(st.session_state.balls/6)) + "." + str((st.session_state.balls - (int(st.session_state.balls/6)*6)))
     if roll == 5:
