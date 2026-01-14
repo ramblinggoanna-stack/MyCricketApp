@@ -5,6 +5,8 @@ st.set_page_config(page_title="Dice Cricket", page_icon="🏏")
 st.title("🏏 Dice Cricket: 1v1 Battle")
 
 # --- 1. DEFINITIONS ---
+maxballs = 60
+
 def check_roll(roll):
     match roll:
         case 0 | 1: return 0
@@ -16,7 +18,6 @@ def check_roll(roll):
         case 9 | 10: return 5
 
 def play_turn():
-    maxballs = 60
     roll = check_roll(random.randint(0, 10))
     st.session_state.balls += 1
     st.session_state.overs = str(int(st.session_state.balls/6)) + "." + str((st.session_state.balls - (int(st.session_state.balls/6)*6)))    
