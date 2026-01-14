@@ -54,7 +54,7 @@ if st.button('Next Ball', use_container_width=True):
 col1, col2, col3 = st.columns(3)
 col1.metric("Total Runs", st.session_state.runs)
 col2.metric("Wickets", st.session_state.wickets)
-col3.metric("Overs", int(st.session_state.balls/6))
+col3.metric("Overs", st.session_state.overs)
 
 # Display Roll History
 st.write("### Over History")
