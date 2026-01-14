@@ -10,6 +10,7 @@ st.title("🏏 Dice Cricket Prototype")
 def play_turn():
     roll = check_roll(random.randint(0, 10))
     st.session_state.balls += 1
+    st.session_state.overs = int(st.session_state.overs/6) & "." & (st.session_state.overs - (int(st.session_state.overs)*6))
     if roll == 5:
         st.session_state.wickets += 1
         st.session_state.history.insert(0, "❌ OUT!")
@@ -40,6 +41,7 @@ if 'runs' not in st.session_state:
     st.session_state.runs = 0
     st.session_state.wickets = 0
     st.session_state.balls = 0
+    st.session_state.overs = ""
     st.session_state.history = []
 
 if st.button('Next Ball', use_container_width=True):
@@ -52,7 +54,7 @@ if st.button('Next Ball', use_container_width=True):
 col1, col2, col3 = st.columns(3)
 col1.metric("Total Runs", st.session_state.runs)
 col2.metric("Wickets", st.session_state.wickets)
-col3.metric("Overs", st.session_state.wickets/6)
+col3.metric("Overs", int(st.session_state.balls/6))
 
 # Display Roll History
 st.write("### Over History")
