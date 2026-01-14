@@ -10,7 +10,7 @@ st.title("🏏 Dice Cricket Prototype")
 def play_turn():
     roll = check_roll(random.randint(0, 10))
     st.session_state.balls += 1
-    st.session_state.overs = int(st.session_state.overs/6) & "." & (st.session_state.overs - (int(st.session_state.overs)*6))
+    st.session_state.overs = int(st.session_state.balls/6) & "." & (st.session_state.balls - (int(st.session_state.balls)*6))
     if roll == 5:
         st.session_state.wickets += 1
         st.session_state.history.insert(0, "❌ OUT!")
