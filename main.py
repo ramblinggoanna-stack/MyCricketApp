@@ -16,20 +16,23 @@ def check_roll(roll):
         case 9 | 10: return 5
 
 def play_turn():
+    maxballs = 60
     roll = check_roll(random.randint(0, 10))
     st.session_state.balls += 1
     st.session_state.overs = str(int(st.session_state.balls/6)) + "." + str((st.session_state.balls - (int(st.session_state.balls/6)*6)))    
     
     if st.session_state.current_player == 1:
         st.session_state.balls_p1 += 1
+        
         if roll == 5:
             st.session_state.wickets_p1 += 1
             st.session_state.history.insert(0, f"P1: ❌ OUT!")
         else:
             st.session_state.runs_p1 += roll
             st.session_state.history.insert(0, f"P1: ✅ {roll} runs")
-        if st.session_state.wickets_p1 >= 10:
+        if st.session_state.wickets_p1 >= 10 or st.session_state.balls >= maxballs:
             st.session_state.current_player = 2
+            st.session_state.balls = 0
             st.session_state.history = ["--- PLAYER 2 START ---"]
     else:
         st.session_state.balls_p2 += 1
@@ -39,7 +42,7 @@ def play_turn():
         else:
             st.session_state.runs_p2 += roll
             st.session_state.history.insert(0, f"P2: ✅ {roll} runs")
-        if st.session_state.runs_p2 > st.session_state.runs_p1 or st.session_state.wickets_p2 >= 10:
+        if st.session_state.runs_p2 > st.session_state.runs_p1 or st.session_state.wickets_p2 >= 10 or st.session_state.balls >= maxballs:
             st.session_state.game_over = True
 
 # --- 2. INITIALIZE SESSION STATE ---
