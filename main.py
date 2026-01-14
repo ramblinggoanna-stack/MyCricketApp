@@ -17,7 +17,8 @@ def check_roll(roll):
 
 def play_turn():
     roll = check_roll(random.randint(0, 10))
-    if st.session_state.current_player == 1:
+    st.session_state.balls += 1
+    st.session_state.overs = str(int(st.session_state.balls/6)) + "." + str((st.session_state.balls - (int(st.session_state.balls/6)*6)))    if st.session_state.current_player == 1:
         st.session_state.balls_p1 += 1
         if roll == 5:
             st.session_state.wickets_p1 += 1
@@ -49,6 +50,8 @@ if 'runs_p1' not in st.session_state:
     st.session_state.balls_p2 = 0
     st.session_state.current_player = 1
     st.session_state.game_over = False
+    st.session_state.balls = 0
+    st.session_state.overs = ""
     st.session_state.history = []
 
 # --- 3. LOGIC BLOCK (MUST COME BEFORE DISPLAY) ---
@@ -77,6 +80,9 @@ with c2:
     st.metric("Runs", st.session_state.runs_p2)
     st.caption(f"Wickets: {st.session_state.wickets_p2}")
 
+st.write("Over: {st.session_state.overs}")
+
+# Display Roll History
 # History and Reset
 st.write("### Match History")
 for log in st.session_state.history[:6]:
