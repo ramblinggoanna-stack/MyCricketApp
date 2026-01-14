@@ -78,11 +78,11 @@ st.divider()
 c1, c2 = st.columns(2)
 with c1:
     st.subheader("Player 1")
-    st.metric("Runs", f"{st.session_state.wickets_p1} / {st.session_state.runs_p1})
+    st.metric("Runs", f"{st.session_state.wickets_p1} / {st.session_state.runs_p1}")
 
 with c2:
     st.subheader("Player 2")
-    st.metric("Runs", f"{st.session_state.wickets_p2} / {st.session_state.runs_p2})
+    st.metric("Runs", f"{st.session_state.wickets_p2} / {st.session_state.runs_p2}")
 
 st.write(f"Over: {st.session_state.overs} (Max :{maxballs/6})")
 
