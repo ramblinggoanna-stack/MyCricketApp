@@ -78,7 +78,7 @@ st.divider()
 c1, c2 = st.columns(2)
 with c1:
     st.subheader("Player 1")
-    st.metric("Runs", st.session_state.wickets_p1 + "/" + st.session_state.runs_p1)
+    st.metric("Runs", str(st.session_state.wickets_p1 + "/" + st.session_state.runs_p1))
     st.caption(f"Wickets: {st.session_state.wickets_p1}")
 
 with c2:
